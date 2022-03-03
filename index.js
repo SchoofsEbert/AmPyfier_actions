@@ -8,7 +8,7 @@ const exec = require('@actions/exec')
 async function clone_ampyfier() {
     core.info("Cloning AmPyfier")
     const ampyfier_token = core.getInput("token")
-    await exec.exec("git clone https://" + ampyfier_token + "#github.com/schoofsebert/AmPyfier")
+    await exec.exec("git clone https://" + ampyfier_token + "@github.com/schoofsebert/AmPyfier")
     await exec.exec("ls AmPyfier")
 }
 
@@ -32,7 +32,7 @@ async function setup_ampyfier(python) {
     else {
         await exec.exec('/bin/bash -c "curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10"')
     }
-    await exec.exec(python + " -m pip install .");
+    await exec.exec(python + " -m pip install AmPyfier");
 }
 
 async function setup() {
@@ -60,8 +60,8 @@ async function amplify() {
 
 async function main() {
     await clone_ampyfier();
-    //await setup();
-    //await amplify();
+    await setup();
+    await amplify();
 }
 
 main();

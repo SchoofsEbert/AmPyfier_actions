@@ -1,0 +1,27 @@
+# action.yml
+name: 'Run AmPyfier'
+description: 'Run AmPyfier'
+inputs:
+  token:
+    description: "PAT with permission to download from private repos"
+    default: ""
+    required: true
+  python-version:
+    description: "Python version to build ampyfier on"
+    required: false
+    default: "3.9"
+  project_dir:
+    description: "Directory from which to run AmPyfier"
+    required: false
+    default: ""
+  test:
+    description: "test module"
+    required: false
+  arguments:
+    description: "other arguments"
+    required: false
+    default: ""
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

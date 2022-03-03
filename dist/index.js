@@ -3001,7 +3001,7 @@ async function setup_ampyfier(python) {
     else {
         await exec.exec('/bin/bash -c "curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10"')
     }
-    await exec.exec(python + " -m pip install AmPyfier");
+    await exec.exec(python + " -m pip install ./AmPyfier");
 }
 
 async function setup() {

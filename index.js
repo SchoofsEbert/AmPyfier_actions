@@ -9,7 +9,6 @@ async function clone_ampyfier() {
     core.info("Cloning AmPyfier")
     const ampyfier_token = core.getInput("token")
     await exec.exec("git clone https://" + ampyfier_token + "@github.com/schoofsebert/AmPyfier")
-    await exec.exec("ls AmPyfier")
 }
 
 async function setup_python(python) {
@@ -49,8 +48,9 @@ async function setup() {
 
 async function create_diff_file(start_commit, end_commit) {
     core.info("Creating diff file")
-    await exec.exec(`ls ${__dirname}`)
-    await exec.exec('/bin/bash -c "/diff_scripts/git-diff-changed-lines.sh ' + start_commit + ' ' + end_commit + '  > ampyfier_diff"')
+    await exec.exec(`ls ${__dirname}/..`)
+    let diff_script = `ls ${__dirname}/../diff_scripts/git-diff-changed-lines.sh`
+    await exec.exec('/bin/bash -c "' + diff_script + ' '  + start_commit + ' ' + end_commit + '  > ampyfier_diff"')
 }
 
 async function run_ampyfier(project_dir, test, arguments) {

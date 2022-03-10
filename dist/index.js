@@ -3018,6 +3018,7 @@ async function setup() {
 
 async function create_diff_file(start_commit, end_commit) {
     core.info("Creating diff file")
+    await exec.exec("ls")
     await exec.exec('/bin/bash -c "./diff_scripts/git-diff-changed-lines.sh ' + start_commit + ' ' + end_commit + '  > ampyfier_diff"')
 }
 

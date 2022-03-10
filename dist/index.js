@@ -3019,9 +3019,10 @@ async function create_diff_file(start_commit, end_commit) {
     core.info("Creating diff file")
     await exec.exec(`ls ${__dirname}/..`)
     let diff_script = `${__dirname}/../diff_scripts/git-diff-changed-lines.sh`
-    await exec.exec(`ls ${__dirname}/..`)
-    await exec.exec(`ls`)
     await exec.exec('/bin/bash -c "' + diff_script + ' '  + start_commit + ' ' + end_commit + '  > ampyfier_diff"')
+    await exec.exec(`ls ${__dirname}/..`)
+    await exec.exec(`ls ${__dirname}`)
+    await exec.exec(`ls`)
 }
 
 async function run_ampyfier(project_dir, test, arguments) {

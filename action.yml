@@ -13,12 +13,20 @@ inputs:
   project_dir:
     description: "Directory from which to run AmPyfier"
     required: false
-    default: ""
+    default: "."
   test:
     description: "test module"
-    required: false
+    required: True
   arguments:
     description: "other arguments"
+    required: false
+    default: ""
+  start_commit:
+    description: "commit to start with when using AmPyfier only on changed files"
+    required: false
+    default: ""
+  end_commit:
+    description: "commit to start with when using AmPyfier only on changed files"
     required: false
     default: ""
 

@@ -3019,6 +3019,8 @@ async function create_diff_file(start_commit, end_commit) {
     core.info("Creating diff file")
     await exec.exec(`ls ${__dirname}/..`)
     let diff_script = `${__dirname}/../diff_scripts/git-diff-changed-lines.sh`
+    await exec.exec(`ls ${__dirname}/..`)
+    await exec.exec(`ls`)
     await exec.exec('/bin/bash -c "' + diff_script + ' '  + start_commit + ' ' + end_commit + '  > ampyfier_diff"')
 }
 
@@ -3039,12 +3041,12 @@ async function amplify() {
     else if ((start_commit.length > 0 && end_commit.length  === 0) || (start_commit.length === 0 && end_commit.length  > 0)) {
         core.warning("You need to give both a start and end commit to amplify on differences")
     }
-    await run_ampyfier(project_dir, test, arguments);
+    // await run_ampyfier(project_dir, test, arguments);
 }
 
 async function main() {
-    await clone_ampyfier();
-    await setup();
+    // await clone_ampyfier();
+    // await setup();
     await amplify();
 }
 

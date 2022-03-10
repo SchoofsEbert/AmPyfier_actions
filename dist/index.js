@@ -3040,12 +3040,12 @@ async function amplify() {
     else if ((start_commit.length > 0 && end_commit.length  === 0) || (start_commit.length === 0 && end_commit.length  > 0)) {
         core.warning("You need to give both a start and end commit to amplify on differences")
     }
-    // await run_ampyfier(project_dir, test, arguments);
+    await run_ampyfier(project_dir, test, arguments);
 }
 
 async function main() {
-    // await clone_ampyfier();
-    // await setup();
+    await clone_ampyfier();
+    await setup();
     await amplify();
 }
 

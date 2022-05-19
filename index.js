@@ -54,8 +54,8 @@ async function create_diff_file(start_commit, end_commit) {
     await exec.exec("cat ampyfier_diff")
 }
 
-async function run_ampyfier(project_dir, test, arguments) {
-    await exec.exec("ampyfier -p " + project_dir + " -t " + test + " " + arguments);
+async function run_ampyfier(python_path, project_dir, test, arguments) {
+    await exec.exec("PYTHON_PATH+=" + python_path + " ampyfier -p " + project_dir + " -t " + test + " " + arguments);
 }
 
 async function amplify() {
@@ -64,6 +64,7 @@ async function amplify() {
     let arguments = core.getInput("arguments")
     let start_commit = core.getInput("start_commit")
     let end_commit = core.getInput("end_commit")
+    let python_path = core.getInput("python-path")
     if (start_commit.length > 0 && end_commit.length > 0) {
         await create_diff_file(start_commit, end_commit)
         arguments += " -d ampyfier_diff"
@@ -71,7 +72,7 @@ async function amplify() {
     else if ((start_commit.length > 0 && end_commit.length  === 0) || (start_commit.length === 0 && end_commit.length  > 0)) {
         core.warning("You need to give both a start and end commit to amplify on differences")
     }
-    await run_ampyfier(project_dir, test, arguments);
+    await run_ampyfier(python_path, project_dir, test, arguments);
 }
 
 async function main() {

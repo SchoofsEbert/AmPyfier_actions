@@ -29,6 +29,10 @@ inputs:
     description: "commit to start with when using AmPyfier only on changed files"
     required: false
     default: ""
+  python_path:
+    description: "directory to append to python path"
+    required: false
+    default: ""
 
 runs:
   using: 'node12'

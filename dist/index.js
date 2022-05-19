@@ -3033,7 +3033,7 @@ async function amplify() {
     let arguments = core.getInput("arguments")
     let start_commit = core.getInput("start_commit")
     let end_commit = core.getInput("end_commit")
-    let python_path = core.getInput("python-path")
+    let python_path = core.getInput("python_path")
     if (start_commit.length > 0 && end_commit.length > 0) {
         await create_diff_file(start_commit, end_commit)
         arguments += " -d ampyfier_diff"

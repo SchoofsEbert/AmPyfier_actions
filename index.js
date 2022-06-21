@@ -22,27 +22,28 @@ async function setup_python(python) {
         await exec.exec("sudo apt-get -y install " + python + " " + python +"-dev " + python+"-pip");
 
     }
-}
-
-async function setup_ampyfier(python) {
     if (core.getInput("python-version") !== "3.10") {
         await exec.exec(python + " -m pip install --upgrade pip");
     }
     else {
         await exec.exec('/bin/bash -c "curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10"')
     }
+}
+
+async function setup_ampyfier(python) {
     await exec.exec(python + " -m pip install ./AmPyfier");
 }
 
 async function setup() {
     let python = "python"
-    if (core.getInput("python-version") !== "3.8") {
-        python += core.getInput("python-version")
+    if (core.getInput("python-version") !== "") {
+        if (core.getInput("python-version") !== "3.8") {
+            python += core.getInput("python-version")
+        } else {
+            python += "3"
+        }
+        await setup_python(python);
     }
-    else {
-        python += "3"
-    }
-    await setup_python(python);
     await setup_ampyfier(python);
 }
 

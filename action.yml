@@ -9,7 +9,7 @@ inputs:
   python-version:
     description: "Python version to build ampyfier on"
     required: false
-    default: "3.9"
+    default: ""
   project_dir:
     description: "Directory from which to run AmPyfier"
     required: false

@@ -3024,7 +3024,7 @@ async function create_diff_file(start_commit, end_commit) {
 }
 
 async function run_ampyfier(python_path, project_dir, test, arguments) {
-    await exec.exec('/bin/bash -c "PYTHON_PATH+=' + python_path + ' ampyfier -p ' + project_dir + ' -t ' + test + ' ' + arguments + '"')
+    await exec.exec('/bin/bash -c "PYTHON_PATH=$PWD/' + python_path + ' ampyfier -p ' + project_dir + ' -t ' + test + ' ' + arguments + '"')
 }
 
 async function amplify() {

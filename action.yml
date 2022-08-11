@@ -1,0 +1,39 @@
+# AmPyfier action.yml
+name: 'Run AmPyfier'
+description: 'Run AmPyfier'
+inputs:
+  token:
+    description: "PAT with permission to download from private repos"
+    default: ""
+    required: true
+  python-version:
+    description: "Python version to build ampyfier on"
+    required: false
+    default: ""
+  project_dir:
+    description: "Directory from which to run AmPyfier"
+    required: false
+    default: "."
+  test:
+    description: "test module"
+    required: True
+  arguments:
+    description: "other arguments"
+    required: false
+    default: ""
+  start_commit:
+    description: "commit to start with when using AmPyfier only on changed files"
+    required: false
+    default: ""
+  end_commit:
+    description: "commit to end with when using AmPyfier only on changed files"
+    required: false
+    default: ""
+  python_path:
+    description: "directory to append to python path"
+    required: false
+    default: ""
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
